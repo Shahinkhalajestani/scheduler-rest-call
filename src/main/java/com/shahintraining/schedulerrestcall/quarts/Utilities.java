@@ -1,5 +1,6 @@
 package com.shahintraining.schedulerrestcall.quarts;
 
+import lombok.RequiredArgsConstructor;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,17 @@ import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
  * @since 11/21/2021
  */
 @Component
+@RequiredArgsConstructor
 public class Utilities {
 
-    @Autowired
-    private Trigger trigger;
-    @Autowired
-    private JobDetail jobDetail;
+//    @Autowired
+//    private Trigger trigger;
+//    @Autowired
+//    private JobDetail jobDetail;
+
+
+    private final Trigger trigger;
+    private final JobDetail jobDetail;
 
     public void executeJobs() throws SchedulerException {
         Scheduler scheduler = new StdSchedulerFactory().getScheduler();
