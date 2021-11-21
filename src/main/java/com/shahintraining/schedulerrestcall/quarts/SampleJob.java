@@ -16,10 +16,10 @@ import org.springframework.stereotype.Component;
 public class SampleJob implements Job {
 
     @Autowired
-    private SampleService sampleService;
+    private SampleService sampleService = new SampleService();
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        System.out.println("YOYOYOYOYOYOYOYO");
+        sampleService.executeSampleJob();
     }
 }

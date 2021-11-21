@@ -27,13 +27,6 @@ public class SchedulerRestCallApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		JobDetail jobDetail = JobBuilder.newJob(SampleJob.class).build();
-		SimpleTrigger trigger = TriggerBuilder.newTrigger().withIdentity("Trigger")
-				.startAt(new Date(System.currentTimeMillis()))
-				.withSchedule(simpleSchedule().withIntervalInSeconds(10).repeatForever())
-				.build();
-		Scheduler scheduler = new StdSchedulerFactory().getScheduler();
-		scheduler.start();
-		scheduler.scheduleJob(jobDetail,trigger);
+		utilities.executeJobs();
 	}
 }
